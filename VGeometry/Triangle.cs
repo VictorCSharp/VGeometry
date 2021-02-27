@@ -2,7 +2,7 @@
 
 namespace VGeometry
 {
-    class Triangle
+    class Triangle:Polygon
     {
         public Point A;
         public Point B;
@@ -10,14 +10,20 @@ namespace VGeometry
         private double a;
         private double b;
         private double c;
-        public Triangle(Point A, Point B, Point C)
+
+        public Triangle(Point[] v): base(v) //syntax!
         {
-            this.A = A;
-            this.B = B;
-            this.C = C;
+            this.A = v[0];
+            this.B = v[1];
+            this.C = v[2];
             this.a = B.distance(C);
             this.b = A.distance(C);
             this.c = A.distance(B);
+        }
+        public static Triangle init(Point A, Point B, Point C)
+        {
+            Point[] v = new Point[3] { A, B, C };
+            return new Triangle(v);
         }
 
         public double geta()
@@ -40,7 +46,7 @@ namespace VGeometry
 
         public double area()
         {
-            double p = (a + b + c) / 2;
+            double p = this.perimeter() / 2;
             return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
         }
     }

@@ -13,7 +13,7 @@ namespace VGeometry
             Point Z = new Point(1, 1);
             Point X = new Point(0, 0);
             Point Y = new Point(0, 1);
-            Triangle Tr = new Triangle(X, Y, Z);
+            Triangle Tr = Triangle.init(X, Y, Z);
 
             Point[] b = new Point[4];
             b[0] = X;
@@ -23,7 +23,7 @@ namespace VGeometry
 
             Polygon P = new Polygon(b);
 
-            Console.WriteLine(Tr.area());
+            Console.WriteLine(Tr.perimeter());
 
         }
     }
