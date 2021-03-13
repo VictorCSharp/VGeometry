@@ -2,10 +2,12 @@
 
 namespace VGeometry
 {
-    class Point
+    public class Point
     {
         public double x;
         public double y;
+
+        public static readonly Point Infinity = new Point(Double.NaN, Double.NaN);
 
         public Point(double x, double y)
         {

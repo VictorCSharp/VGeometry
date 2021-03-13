@@ -1,6 +1,6 @@
 ﻿namespace VGeometry
 {
-    class Polygon
+    public class Polygon
     {
         int n;
         public Point[] vertices;

@@ -13,18 +13,14 @@ namespace VGeometry
             Point X = new Point(0, 0);
             Point Y = new Point(1, 0);
             Point Z = new Point(1, 1);
-            Point Q = new Point(0.5, 2);
             Point V = new Point(0, 1);
-           
-            Point[] vert = new Point[] { X, Y, Z, Q,         V };
-            
-            Polygon p = new Polygon(vert);
 
-            p.centroid().print();
+            Segment s1 = new Segment(X, Z);
 
-            
+            Segment s2 = new Segment(Y, V);
 
-
+            Point I = s1.Intersect(s2);
+            I.print();
 
         }
     }

@@ -2,7 +2,7 @@
 
 namespace VGeometry
 {
-    class Triangle:Polygon
+    public class Triangle:Polygon
     {
         public Point A;
         public Point B;
