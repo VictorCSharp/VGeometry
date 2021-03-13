@@ -10,20 +10,21 @@ namespace VGeometry
     {
         static void Main(string[] args)
         {
-            Point Z = new Point(1, 1);
             Point X = new Point(0, 0);
-            Point Y = new Point(0, 1);
-            Triangle Tr = Triangle.init(X, Y, Z);
+            Point Y = new Point(1, 0);
+            Point Z = new Point(1, 1);
+            Point Q = new Point(0.5, 2);
+            Point V = new Point(0, 1);
+           
+            Point[] vert = new Point[] { X, Y, Z, Q,         V };
+            
+            Polygon p = new Polygon(vert);
 
-            Point[] b = new Point[4];
-            b[0] = X;
-            b[1] = Y;
-            b[2] = Z;
-            b[3] = new Point(1, 0);
+            p.centroid().print();
 
-            Polygon P = new Polygon(b);
+            
 
-            Console.WriteLine(Tr.perimeter());
+
 
         }
     }

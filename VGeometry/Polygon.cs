@@ -26,5 +26,32 @@
                 this.vertices[i].print();
             }
         }
+        
+        public double area()
+        {
+            // TODO: Implement!
+            double area = 0;
+            for (int i = 0; i <= this.n - 3; i++)
+            {
+                // 0, i + 1, i + 2;
+                Triangle x = Triangle.init(this.vertices[0], this.vertices[i + 1], this.vertices[i + 2]);
+                area += x.area();
+               
+
+            }
+
+            return area;
+        }
+
+        public Point centroid()
+        {
+            Point r = new Point (0, 0);
+            for (int i = 0; i < this.n; i++)
+            {
+                r = vertices[i] + r;
+            }
+            return (1d / n) * r;
+            
+        }
     }
 }

@@ -43,11 +43,15 @@ namespace VGeometry
         {
             return (Math.Pow(this.c, 2) + Math.Pow(this.a, 2) - Math.Pow(this.b, 2)) / (2 * c * a);
         }
-
-        public double area()
+        /// <summary>
+        /// Returns the area of the triangle
+        /// </summary>
+        /// <returns>double</returns>
+        new public double area()
         {
             double p = this.perimeter() / 2;
             return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
         }
+
     }
 }

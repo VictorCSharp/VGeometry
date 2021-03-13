@@ -34,6 +34,12 @@ namespace VGeometry
         {
             return new Point(k*Y.x, k*Y.y);
         }
+        public static double distance (Point K, Point L)
+        {
+            return K.distance(L); 
+        }
+
+
 
     }
 }
