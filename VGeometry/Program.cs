@@ -15,13 +15,21 @@ namespace VGeometry
             Point Z = new Point(1, 1);
             Point V = new Point(0, 1);
 
-            Segment s1 = new Segment(X, Z);
+            List<Point> t = new List<Point> { X, Y, Z, V, new Point(0.5, 0.3)};
+            List<Point> hull = ConvexHull.GetConvexHull(t);
+            hull.ForEach(p => p.print());
 
-            Segment s2 = new Segment(Y, V);
+            Console.WriteLine("=============");
+            
+            List<Point> t2 = new List<Point> { X, Y, Z, V, new Point(2.5, 0.3)};
+            List<Point> hull2 = ConvexHull.GetConvexHull(t2);
+            hull2.ForEach(p => p.print());
 
-            Point I = s1.Intersect(s2);
-            I.print();
+            Console.WriteLine("=============");
 
+            List<Point> t3 = new List<Point> { X, Y, Z, V, new Point(2.5, 2.3) };
+            List<Point> hull3 = ConvexHull.GetConvexHull(t3);
+            hull3.ForEach(p => p.print());
         }
     }
 }
