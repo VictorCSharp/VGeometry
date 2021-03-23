@@ -18,9 +18,16 @@ namespace VGeometry
         {
             return Math.Sqrt(Math.Pow(this.x - P.x, 2) + Math.Pow(this.y - P.y, 2));
         }
+
+        override
+        public string ToString()
+        {
+            return $"{this.x}, {this.y}";
+        }
+
         public void print()
         {
-            Console.WriteLine($"{this.x}, {this.y}");
+            Console.WriteLine(this);
         }
 
         public static Point operator+ (Point X, Point Y)

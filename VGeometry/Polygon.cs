@@ -1,8 +1,10 @@
-﻿namespace VGeometry
+﻿using System;
+
+namespace VGeometry
 {
     public class Polygon
     {
-        int n;
+        private readonly int n;
         public Point[] vertices;
 
         public Polygon(Point[] v)
@@ -51,7 +53,36 @@
                 r = vertices[i] + r;
             }
             return (1d / n) * r;
-            
+        }
+
+        /// <summary>
+        /// Checks if the polygon is self-intersectig or simple
+        /// </summary>
+        /// <returns></returns>
+        public bool isSimple()
+        {
+            bool simple = true;
+            for (int i = 0; i <= this.n - 3; i++)
+            {
+                //the first edge
+                Segment a = new Segment(this.vertices[i], this.vertices[i + 1]);
+                for (int m = i + 2; m <= this.n-1; m++)
+                {
+                    //the last edge ends at 0, not at n!
+                    int k = (m + 1 == n) ? 0 : m + 1;
+                    
+                    if (i == m || i == k || i+1 == m || i+1 == k) continue;
+                    Segment b = new Segment(this.vertices[m], this.vertices[k]);
+                    //Console.WriteLine($"{i}{i + 1} {m}{k}");
+
+                    //We check if the two edges intersect
+                    if (a.IntersectInInterior(b))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return simple;
         }
     }
 }

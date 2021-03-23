@@ -31,6 +31,16 @@ namespace VGeometry
             return this.a;
         }
 
+        public double getb()
+        {
+            return this.b;
+        }
+
+        public double getc()
+        {
+            return this.c;
+        }
+
         public double cosc()
         {
             return (Math.Pow(this.a, 2) + Math.Pow(this.b, 2) - Math.Pow(this.c, 2)) /( 2 * a * b);       
@@ -51,6 +61,15 @@ namespace VGeometry
         {
             double p = this.perimeter() / 2;
             return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+        }
+
+        public static double AngleRadians(Point A, Point B, Point C)
+        {
+            // Translate, B to (0,0)
+            double a = Math.Atan2(A.y - B.y, A.x - B.x);
+            double c = Math.Atan2(C.y - B.y, C.x - B.x);
+
+            return a - c;
         }
 
     }
