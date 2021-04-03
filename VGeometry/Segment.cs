@@ -129,6 +129,12 @@ namespace VGeometry
 
             return new Point(x, y);
         }
-            
+
+       public bool IntersectInInterior(Segment s, double tolerance = 0.000001)
+        {
+            Point I = this.Intersect(s, tolerance);
+
+            return this.Contains(I) && s.Contains(I);
+        }
     }
 }
