@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VGeometry
 {
@@ -10,14 +7,7 @@ namespace VGeometry
     {
         static void Main(string[] args)
         {
-            PolySimpleTest();
-        }
-
-        public static void PolySimpleTest()
-        {
-            Point[] v = new Point[6];
-            Polygon p = new Polygon(v);
-            p.IsSimple();
+            TestConvexHull();
         }
 
         public static void TestConvexHull()

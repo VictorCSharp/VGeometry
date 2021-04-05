@@ -30,22 +30,22 @@ namespace VGeometry
             Console.WriteLine(this);
         }
 
-        public static Point operator+ (Point X, Point Y)
+        public static Point operator +(Point X, Point Y)
         {
             return new Point(X.x + Y.x, X.y + Y.y);
         }
-        public static Point operator- (Point X, Point Y)
+        public static Point operator -(Point X, Point Y)
         {
             return new Point(X.x - Y.x, X.y - Y.y);
         }
 
         public static Point operator *(double k, Point Y)
         {
-            return new Point(k*Y.x, k*Y.y);
+            return new Point(k * Y.x, k * Y.y);
         }
-        public static double Distance (Point K, Point L)
+        public static double Distance(Point K, Point L)
         {
-            return K.Distance(L); 
+            return K.Distance(L);
         }
 
 

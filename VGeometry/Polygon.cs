@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace VGeometry
+﻿namespace VGeometry
 {
     public class Polygon
     {
@@ -65,14 +63,14 @@ namespace VGeometry
             for (int i = 0; i <= this.n - 3; i++)
             {
                 //the first edge
-                Segment a = new Segment(this.vertices[i], this.vertices[i + 1]);
+                Segment a = new (this.vertices[i], this.vertices[i + 1]);
                 for (int m = i + 2; m <= this.n-1; m++)
                 {
                     //the last edge ends at 0, not at n!
                     int k = (m + 1 == n) ? 0 : m + 1;
                     
                     if (i == m || i == k || i+1 == m || i+1 == k) continue;
-                    Segment b = new Segment(this.vertices[m], this.vertices[k]);
+                    Segment b = new (this.vertices[m], this.vertices[k]);
                     //Console.WriteLine($"{i}{i + 1} {m}{k}");
 
                     //We check if the two edges intersect
