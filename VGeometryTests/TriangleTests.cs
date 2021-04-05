@@ -12,31 +12,31 @@ namespace VGeometry.Tests
     public class TriangleTests
     {
         [TestMethod()]
-        public void getaTest()
+        public void GetATest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void coscTest()
+        public void CosCTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void cosaTest()
+        public void CosATest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void cosbTest()
+        public void CosBTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void areaTest()
+        public void AreaTest()
         {
             Assert.Fail();
         }

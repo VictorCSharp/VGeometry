@@ -17,7 +17,7 @@ namespace VGeometry
         {
             Point[] v = new Point[6];
             Polygon p = new Polygon(v);
-            p.isSimple();
+            p.IsSimple();
         }
 
         public static void TestConvexHull()
@@ -29,19 +29,19 @@ namespace VGeometry
 
             List<Point> t = new List<Point> { X, Y, Z, V, new Point(0.5, 0.3) };
             List<Point> hull = ConvexHull.GetConvexHull(t);
-            hull.ForEach(p => p.print());
+            hull.ForEach(p => p.Print());
 
             Console.WriteLine("=============");
 
             List<Point> t2 = new List<Point> { X, Y, Z, V, new Point(2.5, 0.3) };
             List<Point> hull2 = ConvexHull.GetConvexHull(t2);
-            hull2.ForEach(p => p.print());
+            hull2.ForEach(p => p.Print());
 
             Console.WriteLine("=============");
 
             List<Point> t3 = new List<Point> { X, Y, Z, V, new Point(2.5, 2.3) };
             List<Point> hull3 = ConvexHull.GetConvexHull(t3);
-            hull3.ForEach(p => p.print());
+            hull3.ForEach(p => p.Print());
         }
     }
 }

@@ -18,7 +18,7 @@ namespace VGeometry
 
        public double Length ()
        {
-            return Point.distance(P1, P2);
+            return Point.Distance(P1, P2);
        }
         /// <summary>
         /// Check if the Segment conatins the Point
