@@ -14,7 +14,7 @@ namespace VGeometry
             this.x = x;
             this.y = y;
         }
-        public double distance(Point P)
+        public double Distance(Point P)
         {
             return Math.Sqrt(Math.Pow(this.x - P.x, 2) + Math.Pow(this.y - P.y, 2));
         }
@@ -25,27 +25,27 @@ namespace VGeometry
             return $"{this.x}, {this.y}";
         }
 
-        public void print()
+        public void Print()
         {
             Console.WriteLine(this);
         }
 
-        public static Point operator+ (Point X, Point Y)
+        public static Point operator +(Point X, Point Y)
         {
             return new Point(X.x + Y.x, X.y + Y.y);
         }
-        public static Point operator- (Point X, Point Y)
+        public static Point operator -(Point X, Point Y)
         {
             return new Point(X.x - Y.x, X.y - Y.y);
         }
 
         public static Point operator *(double k, Point Y)
         {
-            return new Point(k*Y.x, k*Y.y);
+            return new Point(k * Y.x, k * Y.y);
         }
-        public static double distance (Point K, Point L)
+        public static double Distance(Point K, Point L)
         {
-            return K.distance(L); 
+            return K.Distance(L);
         }
 
 

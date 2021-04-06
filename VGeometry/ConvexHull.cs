@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VGeometry
 {
     public class ConvexHull
     {
-        public static double cross(Point O, Point A, Point B)
+        public static double Cross(Point O, Point A, Point B)
         {
             return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
         }
@@ -30,7 +27,7 @@ namespace VGeometry
             // Build lower hull
             for (int i = 0; i < n; ++i)
             {
-                while (k >= 2 && cross(H[k - 2], H[k - 1], points[i]) <= 0)
+                while (k >= 2 && Cross(H[k - 2], H[k - 1], points[i]) <= 0)
                     k--;
                 H[k++] = points[i];
             }
@@ -38,7 +35,7 @@ namespace VGeometry
             // Build upper hull
             for (int i = n - 2, t = k + 1; i >= 0; i--)
             {
-                while (k >= t && cross(H[k - 2], H[k - 1], points[i]) <= 0)
+                while (k >= t && Cross(H[k - 2], H[k - 1], points[i]) <= 0)
                     k--;
                 H[k++] = points[i];
             }

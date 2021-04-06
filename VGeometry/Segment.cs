@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VGeometry
 {
@@ -18,7 +14,7 @@ namespace VGeometry
 
        public double Length ()
        {
-            return Point.distance(P1, P2);
+            return Point.Distance(P1, P2);
        }
         /// <summary>
         /// Check if the Segment conatins the Point

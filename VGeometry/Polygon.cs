@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace VGeometry
+﻿namespace VGeometry
 {
     public class Polygon
     {
@@ -13,39 +11,39 @@ namespace VGeometry
             this.vertices = v;
         }
 
-        public double perimeter ()
+        public double Perimeter ()
         {
             double pr = 0d;
             for (int i = 0; i <= n-2; i++)
             {
-                pr += this.vertices[i].distance(this.vertices[i + 1]);     
+                pr += this.vertices[i].Distance(this.vertices[i + 1]);     
             }
-           return pr + this.vertices[0].distance(this.vertices[n - 1]);
+           return pr + this.vertices[0].Distance(this.vertices[n - 1]);
         }
 
-        public void print ()
+        public void Print ()
         {
             for (int i = 0; i < n; i++)
             {
-                this.vertices[i].print();
+                this.vertices[i].Print();
             }
         }
         
-        public double area()
+        public double Area()
         {
             // TODO: Add test case
             double area = 0;
             for (int i = 0; i <= this.n - 3; i++)
             {
                 // 0, i + 1, i + 2;
-                Triangle x = Triangle.init(this.vertices[0], this.vertices[i + 1], this.vertices[i + 2]);
-                area += x.area();
+                Triangle x = Triangle.Init(this.vertices[0], this.vertices[i + 1], this.vertices[i + 2]);
+                area += x.Area();
             }
 
             return area;
         }
 
-        public Point centroid()
+        public Point Centroid()
         {
             Point r = new Point (0, 0);
             for (int i = 0; i < this.n; i++)
@@ -59,20 +57,20 @@ namespace VGeometry
         /// Checks if the polygon is self-intersectig or simple
         /// </summary>
         /// <returns></returns>
-        public bool isSimple()
+        public bool IsSimple()
         {
             bool simple = true;
             for (int i = 0; i <= this.n - 3; i++)
             {
                 //the first edge
-                Segment a = new Segment(this.vertices[i], this.vertices[i + 1]);
+                Segment a = new (this.vertices[i], this.vertices[i + 1]);
                 for (int m = i + 2; m <= this.n-1; m++)
                 {
                     //the last edge ends at 0, not at n!
                     int k = (m + 1 == n) ? 0 : m + 1;
                     
                     if (i == m || i == k || i+1 == m || i+1 == k) continue;
-                    Segment b = new Segment(this.vertices[m], this.vertices[k]);
+                    Segment b = new (this.vertices[m], this.vertices[k]);
                     //Console.WriteLine($"{i}{i + 1} {m}{k}");
 
                     //We check if the two edges intersect

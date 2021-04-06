@@ -16,40 +16,40 @@ namespace VGeometry
             this.A = v[0];
             this.B = v[1];
             this.C = v[2];
-            this.a = B.distance(C);
-            this.b = A.distance(C);
-            this.c = A.distance(B);
+            this.a = B.Distance(C);
+            this.b = A.Distance(C);
+            this.c = A.Distance(B);
         }
-        public static Triangle init(Point A, Point B, Point C)
+        public static Triangle Init(Point A, Point B, Point C)
         {
             Point[] v = new Point[3] { A, B, C };
             return new Triangle(v);
         }
 
-        public double geta()
+        public double GetA()
         {
             return this.a;
         }
 
-        public double getb()
+        public double GetB()
         {
             return this.b;
         }
 
-        public double getc()
+        public double GetC()
         {
             return this.c;
         }
 
-        public double cosc()
+        public double CosC()
         {
             return (Math.Pow(this.a, 2) + Math.Pow(this.b, 2) - Math.Pow(this.c, 2)) /( 2 * a * b);       
         }
-        public double cosa()
+        public double CosA()
         {
             return (Math.Pow(this.c, 2) + Math.Pow(this.b, 2) - Math.Pow(this.a, 2)) / (2 * c * b);
         }
-        public double cosb()
+        public double CosB()
         {
             return (Math.Pow(this.c, 2) + Math.Pow(this.a, 2) - Math.Pow(this.b, 2)) / (2 * c * a);
         }
@@ -57,9 +57,9 @@ namespace VGeometry
         /// Returns the area of the triangle
         /// </summary>
         /// <returns>double</returns>
-        new public double area()
+        new public double Area()
         {
-            double p = this.perimeter() / 2;
+            double p = this.Perimeter() / 2;
             return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
         }
 
