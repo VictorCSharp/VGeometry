@@ -19,6 +19,17 @@ namespace VGeometry
             return Math.Sqrt(Math.Pow(this.x - P.x, 2) + Math.Pow(this.y - P.y, 2));
         }
 
+        /// <summary>
+        /// Calculates the distance between point and line
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public double Distance(Segment s)
+        {
+            var (a, b, c) = s.LineEq();
+            return Math.Abs(a * this.x + b * this.y + c) / Math.Sqrt(a * a + b * b);
+        }
+
         override
         public string ToString()
         {
@@ -47,8 +58,5 @@ namespace VGeometry
         {
             return K.Distance(L);
         }
-
-
-
     }
 }
