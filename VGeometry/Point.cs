@@ -54,9 +54,37 @@ namespace VGeometry
         {
             return new Point(k * Y.x, k * Y.y);
         }
+
+        public static bool operator ==(Point A, Point B)
+        {
+            double tolerance = Math.Pow(10, -8);
+            return Math.Abs(A.x - B.x) < tolerance && Math.Abs(A.y - B.y) < tolerance;
+        }
+
+        public static bool operator !=(Point A, Point B)
+        {
+            double tolerance = Math.Pow(10, -8);
+            return Math.Abs(A.x - B.x) >= tolerance || Math.Abs(A.y - B.y) >= tolerance;
+        }
+
         public static double Distance(Point K, Point L)
         {
             return K.Distance(L);
+        }
+
+        /// <summary>
+        /// Returns the Point of projection of this point
+        /// upon the segment.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public Point Projection(Segment s)
+        {
+            var (a, b, c) = s.LineEq();
+            double denom = a * a + b * b;
+            double xx = b * (b * this.x - a * this.y) - a * c;
+            double yy = a * (-b * this.x + a * this.y) - b * c;
+            return new(xx/denom, yy/denom);
         }
     }
 }
