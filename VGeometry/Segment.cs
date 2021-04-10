@@ -75,49 +75,44 @@ namespace VGeometry
             }
 
             double x, y;
+            double s1, s2, c1, c2;
 
             //lineA is vertical x1 = x2 - slope will be infinity
             if (Math.Abs(x1 - x2) < tolerance)
             {
-                //compute slope of line 2 (m2) and c2
-                double m2 = (y4 - y3) / (x4 - x3);
-                double c2 = -m2 * x3 + y3;
+                //compute slope of line 2 (s2) and c2
+                (s2, _, c2) = s.LineEq();
 
                 //equation of vertical line is x = c
                 x = x1;
-                y = c2 + m2 * x1;
+                y = c2 + s2 * x1;
             }
             //lineB is vertical x3 = x4 - slope will be infinity
             else if (Math.Abs(x3 - x4) < tolerance)
             {
-                //compute slope of line 1 (m1) and c2
-                double m1 = (y2 - y1) / (x2 - x1);
-                double c1 = -m1 * x1 + y1;
+                //compute slope of line 1 (s1) and c1
+                (s1, _, c1) = this.LineEq();
 
                 x = x3;
-                y = c1 + m1 * x3;
+                y = c1 + s1 * x3;
             }
             //lineA & lineB are not vertical 
-            //(could be horizontal we can handle it with slope = 0)
+            //could be horizontal - we can handle it with slope = 0
             else
             {
-                //compute slope of line 1 (m1) and c2
-                double m1 = (y2 - y1) / (x2 - x1);
-                double c1 = -m1 * x1 + y1;
-
-                //compute slope of line 2 (m2) and c2
-                double m2 = (y4 - y3) / (x4 - x3);
-                double c2 = -m2 * x3 + y3;
+                //compute slope of line 1 and 2
+                (s1, _, c1) = this.LineEq();
+                (s2, _, c2) = s.LineEq();
 
                 //solving equations
-                x = (c1 - c2) / (m2 - m1);
-                y = c2 + m2 * x;
+                x = (c1 - c2) / (s2 - s1);
+                y = c2 + s2 * x;
 
                 //verify by plugging intersection point (x, y)
                 //in orginal equations to see if they intersect
                 //otherwise x,y values will not be finite and will fail this check
-                if (!(Math.Abs(-m1 * x + y - c1) < tolerance
-                    && Math.Abs(-m2 * x + y - c2) < tolerance))
+                if (!(Math.Abs(-s1 * x + y - c1) < tolerance
+                    && Math.Abs(-s2 * x + y - c2) < tolerance))
                 {
                     return new Point(Double.NaN, Double.NaN);
                 }
@@ -131,6 +126,26 @@ namespace VGeometry
             Point I = this.Intersect(s, tolerance);
 
             return this.Contains(I) && s.Contains(I);
+        }
+
+        /// <summary>
+        /// Return the line equation in the form Ax+By+C=0
+        /// </summary>
+        /// <returns></returns>
+        public (double, double, double) LineEq(double tolerance = 0.000001)
+        {
+            double x1 = P1.x, y1 = P1.y;
+            double x2 = P2.x, y2 = P2.y;
+
+            if (Math.Abs(x1 - x2) < tolerance)
+            {
+                return (1, 0, -x1);
+            }
+
+            double slope = (y2 - y1) / (x2 - x1);
+            double coef = -slope * x1 + y1;
+
+            return (slope, -1, coef);
         }
     }
 }

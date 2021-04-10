@@ -82,5 +82,12 @@
             }
             return simple;
         }
+
+        public bool IsInside(Point point)
+        {
+            var rayLine = new Segment(point, new Point(double.MaxValue, point.y));
+            // TODO: Implement
+            return false;
+        }
     }
 }
